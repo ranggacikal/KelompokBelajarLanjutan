@@ -17,29 +17,42 @@ class RegisterActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityRegisterBinding
     private val registerViewModel: RegisterViewModel by viewModels()
+    lateinit var progressDialog: ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupProgressDialog()
         setupListener()
         observeRegister()
+    }
+
+    private fun setupProgressDialog() {
+        progressDialog = ProgressDialog(this@RegisterActivity)
+        progressDialog.setTitle("Mohon tunggu")
+        progressDialog.setMessage("Register sedang di proses")
     }
 
     private fun observeRegister() {
         registerViewModel.registerObserver.observe(this@RegisterActivity) { response ->
             if (response?.sukses == true) {
+                progressDialog.dismiss()
                 Toast.makeText(this, response.pesan, Toast.LENGTH_SHORT).show()
                 val intent = Intent(this@RegisterActivity, MainActivity::class.java)
                 startActivity(intent)
+                finish()
+            } else {
+                progressDialog.dismiss()
+                Toast.makeText(this, response.pesan, Toast.LENGTH_SHORT).show()
             }
-            else Toast.makeText(this, response.pesan, Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun setupListener() = with(binding) {
         val id_user = UUID.randomUUID().toString()
         btnRegister.setOnClickListener {
+            progressDialog.show()
             registerViewModel.requestRegister(
                 id_user,
                 edtUsername.text.toString(),

@@ -1,5 +1,6 @@
 package ranggacikal.co.id.kelompokbelajarlanjutan.repository
 
+import ranggacikal.co.id.kelompokbelajarlanjutan.model.LoginResponse
 import ranggacikal.co.id.kelompokbelajarlanjutan.model.RegisterResponse
 import retrofit2.Call
 
@@ -10,4 +11,9 @@ interface UserRepository {
         password: String?,
         namaLengkap: String?
     ): Call<RegisterResponse>
+
+    fun loginRequest(
+        username: String?,
+        password: String?
+    ): Call<LoginResponse>
 }
