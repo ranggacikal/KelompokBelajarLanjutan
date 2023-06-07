@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace 'ranggacikal.co.id.kelompokbelajarlanjutan'
-    compileSdk 32
+    compileSdk 31
 
     defaultConfig {
         applicationId "ranggacikal.co.id.kelompokbelajarlanjutan"
         minSdk 26
-        targetSdk 32
+        targetSdk 31
         versionCode 1
         versionName "1.0"
 

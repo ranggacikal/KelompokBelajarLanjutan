@@ -60,5 +60,10 @@ class RegisterActivity : AppCompatActivity() {
                 edtNamaLengkap.text.toString()
             )
         }
+        tvLoginFromRegister.setOnClickListener {
+            val intent = Intent(this@RegisterActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }

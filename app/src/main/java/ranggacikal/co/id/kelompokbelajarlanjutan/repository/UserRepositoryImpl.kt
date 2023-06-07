@@ -2,6 +2,7 @@ package ranggacikal.co.id.kelompokbelajarlanjutan.repository
 
 import ranggacikal.co.id.kelompokbelajarlanjutan.model.LoginResponse
 import ranggacikal.co.id.kelompokbelajarlanjutan.model.RegisterResponse
+import ranggacikal.co.id.kelompokbelajarlanjutan.model.ResponseUser
 import ranggacikal.co.id.kelompokbelajarlanjutan.model.UserResponse
 import ranggacikal.co.id.kelompokbelajarlanjutan.network.NetworkConfig
 import retrofit2.Call
@@ -20,7 +21,7 @@ class UserRepositoryImpl : UserRepository {
         return NetworkConfig.getApiService().loginUser(username, password)
     }
 
-    override fun getDataUser(): Call<UserResponse> {
+    override fun getDataUser(): Call<ResponseUser> {
         return NetworkConfig.getApiService().getUser()
     }
 }

@@ -2,6 +2,7 @@ package ranggacikal.co.id.kelompokbelajarlanjutan.network
 
 import ranggacikal.co.id.kelompokbelajarlanjutan.model.LoginResponse
 import ranggacikal.co.id.kelompokbelajarlanjutan.model.RegisterResponse
+import ranggacikal.co.id.kelompokbelajarlanjutan.model.ResponseUser
 import ranggacikal.co.id.kelompokbelajarlanjutan.model.UserResponse
 import retrofit2.Call
 import retrofit2.http.Field
@@ -27,5 +28,5 @@ interface ApiService {
     ): Call<LoginResponse>
 
     @GET("getDataUser")
-    fun getUser(): Call<UserResponse>
+    fun getUser(): Call<ResponseUser>
 }

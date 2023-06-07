@@ -9,7 +9,7 @@
     <EditText
         android:id="@+id/edt_nama_lengkap"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:hint="nama lengkap"
         android:inputType="text"
         android:layout_marginTop="30dp"
@@ -21,7 +21,7 @@
     <EditText
         android:id="@+id/edt_username"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:hint="username"
         android:inputType="text"
         android:layout_marginTop="30dp"
@@ -33,7 +33,7 @@
     <EditText
         android:id="@+id/edt_password"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:hint="password"
         android:inputType="textPassword"
         android:layout_marginTop="30dp"
@@ -48,7 +48,33 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginHorizontal="30dp"
+        android:text="Register"
         app:layout_constraintTop_toBottomOf="@+id/edt_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_title_have_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sudah Memiliki akun?"
+        app:layout_constraintTop_toBottomOf="@id/btn_register"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_login_from_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOGIN"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_have_account"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:layout_marginTop="13dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

@@ -1,18 +1,21 @@
 package ranggacikal.co.id.kelompokbelajarlanjutan.ui.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ranggacikal.co.id.kelompokbelajarlanjutan.databinding.ItemDataUserBinding
+import ranggacikal.co.id.kelompokbelajarlanjutan.model.DataUserItem
 import ranggacikal.co.id.kelompokbelajarlanjutan.model.UserResponse
 
 class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
-    val userList: MutableList<UserResponse> = mutableListOf()
+    val dataUser: MutableList<DataUserItem> = mutableListOf()
 
-    fun addDataUser(list: List<UserResponse>){
-        userList.clear()
-        userList.addAll(list)
+    @SuppressLint("NotifyDataSetChanged")
+    fun addDataUser(list: List<DataUserItem>?){
+        dataUser.clear()
+        list?.let { dataUser.addAll(it) }
         notifyDataSetChanged()
     }
 
@@ -21,14 +24,14 @@ class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        holder.bindView(userList[position])
+        holder.bindView(dataUser[position])
     }
 
-    override fun getItemCount(): Int = userList.size
+    override fun getItemCount(): Int = dataUser.size
 
     class UserViewHolder(private val binding: ItemDataUserBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bindView(userList: UserResponse) = binding.run {
-            tvItemNamaUser.text = userList.dataUser[0].namaLengkap
+        fun bindView(userList: DataUserItem) = binding.run {
+            tvItemNamaUser.text = userList.namaLengkap
         }
     }
 }

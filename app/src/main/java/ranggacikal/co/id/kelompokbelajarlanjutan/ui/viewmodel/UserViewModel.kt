@@ -3,6 +3,7 @@ package ranggacikal.co.id.kelompokbelajarlanjutan.ui.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import ranggacikal.co.id.kelompokbelajarlanjutan.model.ResponseUser
 import ranggacikal.co.id.kelompokbelajarlanjutan.model.UserResponse
 import ranggacikal.co.id.kelompokbelajarlanjutan.repository.UserRepositoryImpl
 import retrofit2.Call
@@ -11,20 +12,20 @@ import retrofit2.Response
 
 class UserViewModel: ViewModel() {
 
-    val userList: MutableLiveData<UserResponse> = MutableLiveData()
+    val userList: MutableLiveData<ResponseUser> = MutableLiveData()
     val repository = UserRepositoryImpl()
 
-    fun getDataUser(): LiveData<UserResponse> {
-        repository.getDataUser().enqueue(object : Callback<UserResponse>{
-            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+    fun getDataUser(): LiveData<ResponseUser> {
+        repository.getDataUser().enqueue(object : Callback<ResponseUser>{
+            override fun onResponse(call: Call<ResponseUser>, response: Response<ResponseUser>) {
                 if (response.isSuccessful){
                     userList.postValue(response.body())
                 } else {
-                    userList.postValue(emptyArray<UserResponse>())
+                    userList.postValue(emptyArray<ResponseUser>())
                 }
             }
 
-            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+            override fun onFailure(call: Call<ResponseUser>, t: Throwable) {
                 t.printStackTrace()
             }
 
