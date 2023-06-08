@@ -38,7 +38,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupListener() = with(binding) {
-        rvDataUser.layoutManager = LinearLayoutManager(this@HomeActivity)
+        rvDataUser.layoutManager = LinearLayoutManager(this@HomeActivity, LinearLayoutManager.VERTICAL, false)
         rvDataUser.adapter = userAdapter
     }
 
