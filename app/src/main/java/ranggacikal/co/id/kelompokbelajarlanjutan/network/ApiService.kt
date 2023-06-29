@@ -3,7 +3,7 @@ package ranggacikal.co.id.kelompokbelajarlanjutan.network
 import ranggacikal.co.id.kelompokbelajarlanjutan.model.LoginResponse
 import ranggacikal.co.id.kelompokbelajarlanjutan.model.RegisterResponse
 import ranggacikal.co.id.kelompokbelajarlanjutan.model.ResponseUser
-import ranggacikal.co.id.kelompokbelajarlanjutan.model.UserResponse
+import ranggacikal.co.id.kelompokbelajarlanjutan.model.UserByIdResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -29,4 +29,10 @@ interface ApiService {
 
     @GET("getDataUser")
     fun getUser(): Call<ResponseUser>
+
+    @FormUrlEncoded
+    @POST("getUserById")
+    fun getUserById(
+        @Field("id_user") idUser: String?
+    ): Call<UserByIdResponse>
 }

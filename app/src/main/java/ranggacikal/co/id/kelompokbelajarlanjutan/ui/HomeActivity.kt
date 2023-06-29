@@ -24,7 +24,6 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupProgressDialog()
-        setupListener()
         observeDataUser()
     }
 
@@ -33,13 +32,10 @@ class HomeActivity : AppCompatActivity() {
             userList.let {
                 progressDialog.dismiss()
                 userAdapter.addDataUser(it.dataUser as List<DataUserItem>?)
+                binding.rvDataUser.layoutManager = LinearLayoutManager(this@HomeActivity, LinearLayoutManager.VERTICAL, false)
+                binding.rvDataUser.adapter = userAdapter
             }
         }
-    }
-
-    private fun setupListener() = with(binding) {
-        rvDataUser.layoutManager = LinearLayoutManager(this@HomeActivity, LinearLayoutManager.VERTICAL, false)
-        rvDataUser.adapter = userAdapter
     }
 
     private fun setupProgressDialog() {
